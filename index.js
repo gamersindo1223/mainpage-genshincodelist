@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const path = require('path')
 const serverless = require('serverless-http');
-const port = 25727 
+const port = 3000
 app.use(cors())
 app.get("/", async(req,res) =>{
   res.sendFile(path.join(__dirname + "/Website/index.html"))
