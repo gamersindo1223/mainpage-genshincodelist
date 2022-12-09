@@ -3,7 +3,7 @@ const router = express.Router()
 const cors = require('cors')
 const path = require('path')
 const serverless = require('serverless-http');
-
+const app = express()
 const port = 3000   
 router.use(cors())
 router.get("/", async(req,res) =>{
@@ -17,8 +17,10 @@ router.get("*", async (req, res) => {
 })
 
 
-router.listen(port, () => {
+app.listen(port, () => {
   console.log(`Example router listening on port ${port}!`)
   console.log("Press Ctrl+C to quit.")
 })
-serverless(router)
+
+module.exports = app
+module.exports.handler = serverless(app)
